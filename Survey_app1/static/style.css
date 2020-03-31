@@ -1,0 +1,15 @@
+*{
+    margin: 10px;
+    padding: 10px;
+   }
+   #wrapper {
+    width: 500px;
+    background-color: slateblue;
+    margin: 0px auto;
+   }
+   #main_content {
+       width: 350px;
+       background-color: white;
+       border-color: black;
+       border-width: 5px;
+   }
