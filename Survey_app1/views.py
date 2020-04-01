@@ -6,14 +6,15 @@ def index(request):
 def process(request):
     if request.method != "POST":
         return redirect("/")
-    print(request.POST['your_name'])
-    print(request.POST['location'])
-    print(request.POST['language'])
-    print(request.POST['comment'])
-    context = {
-        'your_name':request.POST['your_name'],
-        'location':request.POST['location'],
-        'language':request.POST['language'],
-        'comment':request.POST['comment'],
-    }
-    return render(request, "results.html", context)
+    request.session["your_name"] = request.POST['your_name']
+    request.session["location"] = request.POST['location']
+    request.session["language"] = request.POST['language']
+    request.session["comment"] = request.POST['comment']
+    return redirect(f'/results')
+
+def results(request):    
+    return render(request, "results.html")
+
+def clear_session(request):
+    request.session.flush()
+    return redirect("/")
